@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         version="3.1">
+
+  <!-- Limite upload (ex: 20MB) -->
+  <multipart-config>
+    <max-file-size>20971520</max-file-size>
+    <max-request-size>20971520</max-request-size>
+    <file-size-threshold>1048576</file-size-threshold>
+  </multipart-config>
+
+  <servlet>
+    <servlet-name>UploadServlet</servlet-name>
+    <servlet-class>Controller.UploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadServlet</servlet-name>
+    <url-pattern>/Upload</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ConvertServlet</servlet-name>
+    <servlet-class>Controller.ConvertServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConvertServlet</servlet-name>
+    <url-pattern>/Convert</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>DownloadServlet</servlet-name>
+    <servlet-class>Controller.DownloadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DownloadServlet</servlet-name>
+    <url-pattern>/Download</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ViewServlet</servlet-name>
+    <servlet-class>Controller.ViewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewServlet</servlet-name>
+    <url-pattern>/View</url-pattern>
+  </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
