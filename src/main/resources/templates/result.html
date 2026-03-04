@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Résultat</title>
+  <style>
+    :root { --primary:#4f46e5; --bg:#f4f6fb; --card:#fff; --text:#111827; --muted:#6b7280; }
+    body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);}
+    .container{max-width:1100px;margin:auto;padding:24px;}
+    .card{background:var(--card);border-radius:16px;padding:18px;box-shadow:0 10px 25px rgba(0,0,0,.06);}
+    .top{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;}
+    .title{font-size:20px;font-weight:700;}
+    .muted{color:var(--muted);font-size:14px;}
+    .btns{display:flex;gap:10px;flex-wrap:wrap;}
+    .btn{border:0;border-radius:12px;padding:10px 14px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;gap:8px;align-items:center;}
+    .primary{background:var(--primary);color:white;}
+    .ghost{background:#eef2ff;color:#1f2a6b;}
+    .danger{background:#111827;color:white;}
+    .preview{margin-top:14px;height:70vh;border-radius:14px;overflow:hidden;border:1px solid #e5e7eb;}
+    iframe{width:100%;height:100%;border:0;}
+    .note{margin-top:12px;padding:12px;border-radius:12px;background:#fff7ed;border:1px solid #fed7aa;color:#7c2d12;}
+    code{background:#f3f4f6;padding:2px 6px;border-radius:8px;}
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="card">
+    <div class="top">
+      <div>
+        <div class="title">Conversion terminée ✅</div>
+        <div class="muted">
+          Fichier : <strong th:text="${fileName}">document.pdf</strong>
+        </div>
+      </div>
+
+      <div class="btns">
+        <a class="btn primary" th:href="${downloadUrl}">⬇️ Télécharger</a>
+        <a class="btn ghost" th:href="${waLink}" target="_blank" rel="noopener">🟢 WhatsApp</a>
+        <a class="btn ghost" th:href="${tgLink}" target="_blank" rel="noopener">🔵 Telegram</a>
+        <a class="btn danger" th:href="@{/}">➕ Nouvelle conversion</a>
+      </div>
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="preview" th:if="${isPdfPreview}">
+      <iframe th:src="${previewUrl}"></iframe>
+    </div>
+
+    <!-- Message si pas PDF -->
+    <div class="note" th:if="${!isPdfPreview}">
+      Aperçu direct indisponible pour <strong th:text="${ext}">docx</strong>.
+      <br/>
+      Solution recommandée : générer un <strong>aperçu PDF</strong> (ex: convertir le résultat en PDF pour preview),
+      ou utiliser un viewer côté client (selon format).
+      <br/>
+      Pour l’instant tu peux quand même : <a th:href="${downloadUrl}">télécharger</a> et partager le lien.
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>

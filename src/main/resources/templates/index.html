@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>PDFOffice – Convertisseur de fichiers</title>
+
+<style>
+:root{
+  --primary:#4f46e5;
+  --bg:#f4f6fb;
+  --card:#ffffff;
+  --text:#111827;
+  --muted:#6b7280;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Segoe UI,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+
+h1{
+  font-size:40px;
+  line-height:1.2;
+}
+
+.highlight{color:var(--primary)}
+
+.card{
+  background:var(--card);
+  border-radius:18px;
+  padding:30px;
+  box-shadow:0 20px 40px rgba(0,0,0,.08);
+}
+
+.dropzone{
+  border:2px dashed #c7d2fe;
+  border-radius:14px;
+  padding:30px;
+  text-align:center;
+  color:var(--muted);
+}
+
+select, button{
+  width:100%;
+  margin-top:15px;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #e5e7eb;
+  font-size:16px;
+}
+
+button{
+  background:var(--primary);
+  color:white;
+  border:none;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.features{
+  margin-top:60px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.feature{
+  background:white;
+  border-radius:16px;
+  padding:24px;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="hero">
+    <div>
+      <h1>
+        Convertissez vos fichiers <br>
+        <span class="highlight">en quelques secondes</span>
+      </h1>
+      <p class="muted">
+        PDF, Word, Excel, PowerPoint.<br>
+        Téléchargez, convertissez, partagez.
+      </p>
+    </div>
+
+    <div class="card">
+      <form method="post" action="/convert" enctype="multipart/form-data">
+        <div class="dropzone">
+          Glissez votre fichier ici<br>ou cliquez pour choisir
+          <input type="file" name="file" required>
+        </div>
+
+        <select name="to" required>
+          <option value="">Format de sortie</option>
+          <option value="pdf">PDF</option>
+          <option value="docx">Word</option>
+          <option value="xlsx">Excel</option>
+          <option value="pptx">PowerPoint</option>
+        </select>
+
+        <button type="submit">🚀 Convertir</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="feature">⚡ Conversion rapide</div>
+    <div class="feature">🔒 Sécurisé</div>
+    <div class="feature">📲 Partage facile</div>
+  </div>
+</div>
+
+</body>
+</html>
